@@ -10,19 +10,18 @@ var Board = function( selector ) {
 
 Board.prototype = {
 
-  stopProp: function(){
+  stopPropClick: function(){
     $(this.background).on('click', '.post-it', function(e) {
       e.stopPropagation();
     })
   },
   postCreate: function(){
     $(this.background).on('click', function(e){
-   
       var singlePostit = new PostIt(e.pageX, e.pageY)
       $(e.target).append(singlePostit.html)
       $('.post-it').draggable({containment: "parent", handle: ".header"})
     });
-    this.stopProp()
+    this.stopPropClick()
   },
   postRemove: function(){
     this.postCursor();
